@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mayak</title>
+  <meta name="description" content="Mayak — XMPP messenger client for iPhone.">
+  <link rel="icon" type="image/png" href="assets/app-icon-180.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="alternate" hreflang="ru" href="ru/index.html">
+  <link rel="alternate" hreflang="en" href="en/index.html">
+  <noscript><meta http-equiv="refresh" content="0; url=en/index.html"></noscript>
+  <script>
+    (function () {
+      // Static hosting cannot read the Accept-Language header, so use its
+      // client-side equivalent: the browser language preference list. First
+      // supported match wins; anything undetected falls through to English.
+      var langs = navigator.languages
+        || [navigator.language || navigator.userLanguage || ""];
+      var target = "en/index.html";
+      for (var i = 0; i < langs.length; i++) {
+        var tag = String(langs[i] || "").toLowerCase();
+        if (tag === "ru" || tag.indexOf("ru-") === 0) {
+          target = "ru/index.html";
+          break;
+        }
+        if (tag === "en" || tag.indexOf("en-") === 0) { break; }
+      }
+      window.location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <main class="lang-pick">
+    <div>
+      <img src="assets/app-icon-180.png" alt="Mayak" width="120" height="120">
+      <h1>Mayak</h1>
+      <p>Redirecting… / Перенаправление…</p>
+      <div class="choices">
+        <a href="en/index.html" hreflang="en">English</a>
+        <a href="ru/index.html" hreflang="ru">Русский</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
