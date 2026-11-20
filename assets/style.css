@@ -388,3 +388,74 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .contact-card p:first-child { margin-top:0; }
 .contact-card p:last-child { margin-bottom:0; }
 .contact-button { display:inline-block; padding:10px 16px; border:1px solid var(--accent); border-radius:10px; text-decoration:none; }
+
+/* Features: visual cards + compact row. Pastel cards stay light in both
+   schemes and carry their own dark text colors. */
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  min-width: 0;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 40, 70, 0.1);
+  padding: 26px 22px 24px;
+  text-align: center;
+  color: #1a2233;
+}
+.feature-card h3 { margin: 0 0 6px; font-size: 1.15rem; letter-spacing: -0.01em; }
+.feature-card p { margin: 0; color: #455160; font-size: 0.95rem; }
+
+.feature-blue { background: linear-gradient(180deg, #cbeafd, #bbe3fe); }
+.feature-peach { background: #fdcfb8; }
+.feature-mint { background: linear-gradient(180deg, #c9eeda, #b9e4d0); }
+
+.feature-media img {
+  display: block;
+  margin: 0 auto 20px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 540px;
+  /* The mockups bake a shadow into their pastel background; fade the
+     edges so the picture dissolves into the card instead of ending
+     on a hard rectangle. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 34px, #000 calc(100% - 34px), transparent),
+    linear-gradient(to bottom, transparent, #000 34px, #000 calc(100% - 34px), transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 34px, #000 calc(100% - 34px), transparent),
+    linear-gradient(to bottom, transparent, #000 34px, #000 calc(100% - 34px), transparent);
+  mask-composite: intersect;
+}
+
+.feature-minor {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+.feature-minor-item { display: flex; gap: 14px; align-items: flex-start; }
+.feature-minor-icon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.feature-minor-icon svg { width: 22px; height: 22px; }
+.feature-minor h3 { margin: 0 0 4px; font-size: 1rem; }
+.feature-minor p { margin: 0; color: var(--text-2); font-size: 0.92rem; }
+
+@media (max-width: 899px) {
+  .feature-cards { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .feature-media img { max-height: 480px; }
+  .feature-minor { grid-template-columns: 1fr; gap: 16px; }
+}
